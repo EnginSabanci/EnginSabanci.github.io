@@ -22,6 +22,10 @@ const addTweet = (newTweet) => {
   streams.home.push(newTweet);
 };
 
+
+// When I create new tweet push it to the home array in streams obj
+
+
 // Utility function
 const randomElement = (array) => {
   const randomIndex = Math.floor(Math.random() * array.length);
@@ -55,7 +59,7 @@ const generateRandomTweet = () => {
   addTweet(tweet);
 };
 
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 10 ; i++) {
   generateRandomTweet();
 }
 
