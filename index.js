@@ -32,7 +32,7 @@ $(document).ready(() => {
   const $tweets = streams.home.map((tweet) => {
     //add the user to the UserList
     const $tweet = $('<div></div>');  
-    let text = `@${tweet.user}: ${tweet.message}`;
+    let text = `@${tweet.user}: ${tweet.message} ${moment(tweet.created_at).fromNow()}`;
     $tweet.text(text);
   // $container.append($tweet);
     return $tweet;
@@ -45,7 +45,7 @@ $(document).ready(() => {
         const value = $("#input_tweet").val();
         //if the user type sth, it would be appeared on the page as new tweet.
         if(value.length > 0){
-             const $text = $("<div></div>").text(`@Me: ${value} ${new Date}`); // text function takes value as parameter
+             const $text = $("<div></div>").text(`@Me: ${value} ${moment(new Date).fromNow()}`); // text function takes value as parameter
         $("#my-new-tweets").append($text)
         // When I create new tweet push it to an array and retrieve from this array
         }
@@ -67,6 +67,8 @@ $(function(){
 //Allow the user to click on any username to see that user’s timeline.
 $(function(){
   $(".users").click(function(e){
+    $("#timeline").css("border", "2px solid black")
+
       //when click we get the name of the user from the h2 we click.
       // location.reload();
       let userClicked = $(this).text();
@@ -81,7 +83,7 @@ $(function(){
           let arr = streams.users[each]
           for(let i = 0; i < arr.length; i++){
             const $tweet = $('<div>')//.atrr("class","timeline-tweets");  
-            let text = `@${each}: ${arr[i].message} - ${arr[i].created_at}`;
+            let text = `@${each}: ${arr[i].message} - ${moment(arr[i].created_at).fromNow()}`; //${moment(tweet.created_at).fromNow()}
             $tweet.text(text);
             $($div2).append($tweet).appendTo("#timeline")
           // console.log(text)
@@ -101,3 +103,4 @@ $(".users")
 .css("color","white");
 
 });
+//Css for timeline container
