@@ -58,7 +58,7 @@ const generateRandomTweet = () => {
   };
   addTweet(tweet);
 };
-
+//I switch to the while loop when click each user their tweets appear
 for (let i = 0; i < 10 ; i++) {
   generateRandomTweet();
 }
