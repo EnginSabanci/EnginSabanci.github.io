@@ -70,7 +70,11 @@ $(function(){
 //Allow the user to click on any username to see that user’s timeline.
 $(function(){
   $(".users").click(function(e){
-    location.reload();
+    if($("#timeline").length){
+      $("#timeline").remove();
+    }  
+    const $timeline = ("<div id='timeline' class='container'></div>");
+    $($timeline).appendTo(".main");
     $("#timeline").css("padding-top","20px").css("padding-bottom", "20px").css("padding-left", "25px").css("background-color","#F0FFFF")
 
       //when click we get the name of the user from the h2 we click.
@@ -93,7 +97,9 @@ $(function(){
           // console.log(text)
           }
           e.preventDefault();
-          $("#users-tweets").append(`${each}  timeline`);
+          const $h2 = $("<h2></h2>").attr("id","#users-tweets")
+          $("#users-tweets").append(`${each}  timeline`).prepend("#timeline");
+          
         }
       }
       // console.log(userClicked)
