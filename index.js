@@ -28,6 +28,9 @@ $(document).ready(() => {
   // $("#timeline").append($div2)
   }
 
+  const $justme = $("<div>").attr("class", "users").attr("id","justme");
+  $justme.text("Me");
+  $("#users").append($justme);
   
   const $tweets = streams.home.map((tweet) => {
     //add the user to the UserList
@@ -96,6 +99,37 @@ $(function(){
      
     })
 });
+
+var data = [];
+$(document).ready(function(){
+  $("#submit").click(function(){
+    data.push($('#input_tweet').val());
+  })
+})
+
+$(function(){
+  $("#justme").click(function(e){
+    $("#timeline").css("padding-top","20px").css("padding-bottom", "20px").css("padding-left", "25px").css("background-color","#F0FFFF")
+
+      //when click we get the name of the user from the h2 we click.
+      // location.reload();
+          const $div2 = $("<div>")
+          for(let i = 0; i < data.length; i++){
+            const $tweet = $('<div>')//.atrr("class","timeline-tweets");  
+            let text = `@Me: ${data[i]} - ${moment(new Date).fromNow()}`; //${moment(tweet.created_at).fromNow()}
+            $tweet.text(text);
+            $($div2).append($tweet).appendTo("#timeline")
+          // console.log(text)
+          }
+          e.preventDefault();
+          $("#users-tweets").append(`My  timeline`);
+        }
+      // console.log(userClicked)
+     
+    )
+});
+
+console.log(data);
 
 //css for users on the side bar
 
