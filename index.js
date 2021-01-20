@@ -70,6 +70,7 @@ $(function(){
 //Allow the user to click on any username to see that user’s timeline.
 $(function(){
   $(".users").click(function(e){
+    location.reload();
     $("#timeline").css("padding-top","20px").css("padding-bottom", "20px").css("padding-left", "25px").css("background-color","#F0FFFF")
 
       //when click we get the name of the user from the h2 we click.
